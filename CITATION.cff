@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+title: "Leakage-Free Machine Learning Framework for Diabetes Risk Prediction"
+message: "If you use this repository in your research, please cite the associated publication."
+type: software
+
+authors:
+  - family-names: "Soomro"
+    given-names: "Amresha"
+    affiliation: "Altinbas University"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+
+repository-code: "https://github.com/emmadigital/leakage-free-diabetes-risk-prediction"
+
+keywords:
+  - machine learning
+  - diabetes prediction
+  - leakage-free evaluation
+  - medical AI
+  - cross-validation
+  - neural networks
+  - reproducible research
+
+license: MIT
+
+version: "1.0"
+
+date-released: 2026-03-17
+
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Soomro"
+      given-names: "Amresha"
+  title: "Leakage-Free Machine Learning Framework for Diabetes Risk Prediction"
+  journal: "Healthcare"
+  year: 2026
+  publisher: "MDPI"
+  doi: "TO_BE_ADDED_AFTER_ACCEPTANCE"
