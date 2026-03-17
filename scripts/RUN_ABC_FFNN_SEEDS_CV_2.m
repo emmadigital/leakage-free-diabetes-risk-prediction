@@ -1,0 +1,137 @@
+%% RUN_ABC_FFNN_SEEDS_CV_2.m
+clear; clc;
+load('prepared_risk.mat','X','y','groups','predictors');
+
+K = 10;
+S = 5;
+baseSeed = 1;
+
+auc_seed = zeros(S,1);
+acc_seed = zeros(S,1);
+sens_seed = zeros(S,1);
+spec_seed = zeros(S,1);
+f1_seed = zeros(S,1);
+prec_seed = zeros(S,1);
+brier_seed = zeros(S,1);
+ci_auc_boot_seed = nan(S,2);
+cal_int_seed = zeros(S,1);
+cal_slope_seed = zeros(S,1);
+Csum_seed = zeros(2,2,S);
+
+y_all_seed = cell(S,1);
+p_all_seed = cell(S,1);
+pred_all_seed = cell(S,1);
+id_all_seed = cell(S,1);
+
+for s = 1:S
+    rng(baseSeed+s,'twister');
+    foldId = stratifiedGroupKFold(y, groups, K, baseSeed+s);
+
+    allC = zeros(2,2,K);
+    y_all = [];
+    p_all = [];
+    id_all = [];   % reset once per seed
+    fold_auc = zeros(K,1);
+    fold_brier = zeros(K,1);
+
+    for k = 1:K
+        te = (foldId==k);
+        tr = ~te;
+
+        idte = find(te);
+
+        Xtr0 = X(tr,:); 
+        ytr0 = y(tr);
+        Xte  = X(te,:); 
+        yte  = y(te);
+
+        sc = fitMinMaxScaler(Xtr0);
+        Xtr0 = applyMinMaxScaler(Xtr0, sc);
+        Xte  = applyMinMaxScaler(Xte, sc);
+
+        % inner validation split for ABC fitness
+        rng(baseSeed + 100*s + k, 'twister');
+        cvInner = cvpartition(ytr0, 'HoldOut', 0.2);
+        idxTr = training(cvInner);
+        idxVal = test(cvInner);
+
+        Xtr = Xtr0(idxTr,:);   
+        ytr = ytr0(idxTr);
+        Xval = Xtr0(idxVal,:); 
+        yval = ytr0(idxVal);
+
+        baseNet = patternnet(200);
+        baseNet.trainFcn = 'trainscg';
+        baseNet.performFcn = 'crossentropy';
+        baseNet.divideFcn = 'dividetrain';
+        baseNet.trainParam.showWindow = false;
+        baseNet.trainParam.epochs = 200;
+
+        % One-hot encoding creates a 2-output network internally
+        Ttr = full(ind2vec(ytr'+1));
+        baseNet = configure(baseNet, Xtr', Ttr);
+
+        bestWB = abc_optimize_initwb(baseNet, Xtr, ytr, Xval, yval, baseSeed + 1000*s + k);
+
+        finalNet = baseNet;
+        finalNet = setwb(finalNet, bestWB);
+
+        Tall = full(ind2vec(ytr0'+1));
+        finalNet = configure(finalNet, Xtr0', Tall);
+        finalNet = train(finalNet, Xtr0', Tall);
+
+        yhat = finalNet(Xte');
+        p_pos = yhat(2,:)';
+        p_pos = max(min(p_pos,1),0);
+        pred = double(p_pos >= 0.5);
+
+        % Store pooled predictions and IDs
+        id_all = [id_all; idte(:)];
+        y_all = [y_all; yte(:)];
+        p_all = [p_all; p_pos(:)];
+
+        [~,~,~,AUC] = perfcurve(yte, p_pos, 1);
+        fold_auc(k) = AUC;
+        fold_brier(k) = mean((p_pos - yte).^2);
+
+        allC(:,:,k) = confusionmat(yte, pred, 'Order',[0 1]);
+    end
+
+    Csum = sum(allC,3);
+    Csum_seed(:,:,s) = Csum;
+    mm = metricsFromConfMat(Csum);
+
+    acc_seed(s) = mm.acc;
+    sens_seed(s) = mm.sens;
+    spec_seed(s) = mm.spec;
+    f1_seed(s) = mm.f1;
+    prec_seed(s) = Csum(2,2) / max(1, Csum(2,2)+Csum(1,2));
+
+    auc_seed(s) = mean(fold_auc);
+    brier_seed(s) = mean(fold_brier);
+    ci_auc_boot_seed(s,:) = bootstrapAUC(y_all, p_all, 2000, baseSeed+999*s);
+    [cal_int_seed(s), cal_slope_seed(s)] = calibrationSlopeIntercept(y_all, p_all);
+
+    y_all_seed{s} = y_all;
+    p_all_seed{s} = p_all;
+    pred_all_seed{s} = double(p_all >= 0.5);
+    id_all_seed{s} = id_all;
+
+    fprintf('Seed %d | Acc=%.4f\n', s, acc_seed(s));
+end
+
+fprintf('\n=== ABC-FFNN - Dataset 2 (%d seeds, %d-fold CV) ===\n', S, K);
+fprintf('Accuracy = %.4f ± %.4f\n', mean(acc_seed), std(acc_seed));
+fprintf('Sensitivity = %.4f ± %.4f\n', mean(sens_seed), std(sens_seed));
+fprintf('Specificity = %.4f ± %.4f\n', mean(spec_seed), std(spec_seed));
+fprintf('F1-score = %.4f ± %.4f\n', mean(f1_seed), std(f1_seed));
+fprintf('Precision = %.4f ± %.4f\n', mean(prec_seed), std(prec_seed));
+fprintf('Mean AUC = %.4f ± %.4f\n', mean(auc_seed), std(auc_seed));
+fprintf('Mean Brier = %.4f ± %.4f\n', mean(brier_seed), std(brier_seed));
+fprintf('Calibration intercept = %.4f ± %.4f\n', mean(cal_int_seed), std(cal_int_seed));
+fprintf('Calibration slope     = %.4f ± %.4f\n', mean(cal_slope_seed), std(cal_slope_seed));
+
+save('results2_abc_seeds.mat', ...
+    'acc_seed','sens_seed','spec_seed','prec_seed','f1_seed','auc_seed', ...
+    'brier_seed','ci_auc_boot_seed','cal_int_seed','cal_slope_seed', ...
+    'Csum_seed','y_all_seed','p_all_seed','pred_all_seed','id_all_seed','S','K');
