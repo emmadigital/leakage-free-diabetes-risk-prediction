@@ -286,6 +286,16 @@ These measures ensure reliable estimation of model generalization performance.
 
 ---
 
+# Flowchart
+
+The study workflow is illustrated below.
+![Test Image 4]([https://github.com/emmadigital/leakage-free-diabetes-risk-prediction/docs/Figure 3.png])
+```
+Leakage-Free Machine Learning Framework for Diabetes Risk Prediction
+```
+
+---
+
 # Citation
 
 If you use this repository, please cite the associated study:
