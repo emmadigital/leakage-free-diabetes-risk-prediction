@@ -312,3 +312,13 @@ Leakage-Free Machine Learning Framework for Diabetes Risk Prediction
 This project is released under the **MIT License**.
 
 ---
+
+# Contact
+
+For questions regarding the code or experiments, please contact:
+
+```
+Author Name: Amresha Soomro
+Institution: Altinbas University
+Email: amreshasoomro@gmail.com
+```
