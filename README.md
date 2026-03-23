@@ -288,7 +288,8 @@ These measures ensure reliable estimation of model generalization performance.
 
 # Flowchart
 
-The study workflow is illustrated below.
+The study workflow of the proposed leakage-free diabetes classification framework is illustrated below. 
+
 ![Flowchart](https://github.com/emmadigital/leakage-free-diabetes-risk-prediction/blob/main/docs/Figure3.png)
 ```
 Leakage-Free Machine Learning Framework for Diabetes Risk Prediction
