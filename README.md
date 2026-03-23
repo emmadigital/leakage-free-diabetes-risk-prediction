@@ -164,9 +164,10 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── GENERATE_STAT_TABLES_D1_D2.m
 │   ├── SUMMARIZE_AND_PLOT_DIAGNOSTIC_TRADEOFF.m
 │
-│   ├── FIG_ROC_TOP_MODELS_BOTH_DATASETS.m
+│   ├── FIG_ROC_ALL_MODELS_BOTH_DATASETS.m
 │   ├── FIG_CALIBRATION_CURVES_BOTH_DATASETS.m
 │   ├── FIG_DIAGNOSTIC_TRADEOFF_BOTH_DATASETS.m
+│   ├── FIG_DECISION_CURVE_ANALYSIS_BOTH_DATASETS.m
 │   ├── Model_Ranking_Radar_Top4.m
 │
 ├── helpers
@@ -190,6 +191,7 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── ROC_curves.png
 │   ├── calibration_curves.png
 │   ├── diagnostic_tradeoff.png
+│   ├── decision_curve.png
 │   ├── radar_chart_models.png
 │
 ├── tables
