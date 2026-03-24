@@ -162,7 +162,7 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── RUN_ABC_FFNN_SEEDS_CV_2.m
 │
 │   ├── GENERATE_STAT_TABLES_D1_D2.m
-│   ├── SUMMARIZE_AND_PLOT_DIAGNOSTIC_TRADEOFF.m
+│   ├── SUMMARIZE_SENS_SPEC_F1_ALL_MODELS.m
 │
 │   ├── FIG_ROC_ALL_MODELS_BOTH_DATASETS.m
 │   ├── FIG_CALIBRATION_CURVES_BOTH_DATASETS.m
@@ -189,11 +189,30 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── results_logreg_seeds.mat
 │   ├── results_rf_seeds.mat
 │   ├── results_grnn_seeds.mat
+│   ├── results_bpnn_seeds.mat
 │   ├── results_abc_seeds.mat
+│   ├── results_plain_seeds.mat
+│   ├── results2_logreg_seeds.mat
+│   ├── results2_rf_seeds.mat
+│   ├── results2_grnn_seeds.mat
+│   ├── results2_bpnn_seeds.mat
+│   ├── results2_abc_seeds.mat
+│   ├── results2_plain_seeds.mat
 │
-├── tables
-│   ├── Table4_statistical_comparison_dataset1.csv
-│   ├── Table5_statistical_comparison_dataset2.csv
+├── docs
+│   ├── Table4_Statistical_Comparison_Dataset1.csv
+│   ├── Table5_Statistical_Comparison_Dataset2.csv
+│   ├── Figure 2.png
+│   ├── Figure3.png
+│   ├── Figure 4.png
+│   ├── Figure 5.png
+│   ├── Figure 6.png
+│   ├── Figure 7.png
+│   ├── Figure 8.png
+│   ├── Figure 9.png
+│   ├── Figure 10.png
+│   ├── Figure 11.png
+│   ├── Figure 12.png
 │
 └── README.md
 ```
