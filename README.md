@@ -169,6 +169,9 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── FIG_DIAGNOSTIC_TRADEOFF_BOTH_DATASETS.m
 │   ├── FIG_DECISION_CURVE_ANALYSIS_BOTH_DATASETS.m
 │   ├── Model_Ranking_Radar_Top4.m
+│   ├── FIG_STAT_HEATMAP_D1_DYNAMIC.m
+│   ├── FIG_STAT_HEATMAP_D1_DYNAMIC.m
+
 │
 ├── helpers
 │   ├── stratifiedGroupKFold.m
@@ -186,13 +189,6 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── results_rf_seeds.mat
 │   ├── results_grnn_seeds.mat
 │   ├── results_abc_seeds.mat
-│
-├── figures
-│   ├── ROC_curves.png
-│   ├── calibration_curves.png
-│   ├── diagnostic_tradeoff.png
-│   ├── decision_curve.png
-│   ├── radar_chart_models.png
 │
 ├── tables
 │   ├── Table4_statistical_comparison_dataset1.csv
