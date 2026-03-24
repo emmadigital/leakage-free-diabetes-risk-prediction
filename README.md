@@ -144,7 +144,7 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── dataset_info.md
 │
 ├── scripts
-│   ├── RUN_0_prepare_data_from_csv.m
+│   ├── RUN_0_prepare_data.m
 │   ├── PREPARE_DiabetesRisk_DATASET.m
 │
 │   ├── RUN_LOGREG_SEEDS_CV.m
@@ -154,12 +154,12 @@ Leakage-Free-Diabetes-Risk-Prediction
 │   ├── RUN_GRNN_SEEDS_CV.m
 │   ├── RUN_ABC_FFNN_SEEDS_CV.m
 │
-│   ├── RUN_LOGREG_SEEDS_CV_1.m
-│   ├── RUN_RF_SEEDS_CV_1.m
-│   ├── RUN_FFNN_SEEDS_CV_1.m
-│   ├── RUN_BPNN_SEEDS_CV_1.m
-│   ├── RUN_GRNN_SEEDS_CV_1.m
-│   ├── RUN_ABC_FFNN_SEEDS_CV_1.m
+│   ├── RUN_LOGREG_SEEDS_CV_2.m
+│   ├── RUN_RF_SEEDS_CV_2.m
+│   ├── RUN_FFNN_SEEDS_CV_2.m
+│   ├── RUN_BPNN_SEEDS_CV_2.m
+│   ├── RUN_GRNN_SEEDS_CV_2.m
+│   ├── RUN_ABC_FFNN_SEEDS_CV_2.m
 │
 │   ├── GENERATE_STAT_TABLES_D1_D2.m
 │   ├── SUMMARIZE_AND_PLOT_DIAGNOSTIC_TRADEOFF.m
