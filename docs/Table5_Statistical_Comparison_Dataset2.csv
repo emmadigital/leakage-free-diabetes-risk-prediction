@@ -1,0 +1,16 @@
+ModelComparison,DeltaAUC,DeLongZ,DeLongP,AccuracyDifference,McNemarP,Significance
+LogReg vs RF,-0.0048,0.392,0.6951,0.0154,0.2159,Not significant
+LogReg vs FFNN,0.0018,0.2011,0.8406,0.0231,0.0446,FFNN significantly better
+LogReg vs BPNN,0.0312,2.3634,0.0181,0.0231,0.0518,BPNN significantly better
+LogReg vs GRNN,0.0129,0.8111,0.4173,0.0192,0.1443,Not significant
+LogReg vs ABC-FFNN,0.0181,1.4129,0.1577,0.0231,0.082,Not significant
+RF vs FFNN,0.0066,0.6504,0.5155,0.0077,0.4545,Not significant
+RF vs BPNN,0.036,2.577,0.01,0.0077,0.5235,BPNN significantly better
+RF vs GRNN,0.0177,1.0421,0.2974,0.0038,0.8445,Not significant
+RF vs ABC-FFNN,0.0229,1.707,0.0878,0.0077,0.5235,Not significant
+FFNN vs BPNN,0.0293,2.638,0.0083,0,1,BPNN significantly better
+FFNN vs GRNN,0.0111,0.7548,0.4504,-0.0038,0.7905,Not significant
+FFNN vs ABC-FFNN,0.0162,1.5779,0.1146,0,1,Not significant
+BPNN vs GRNN,-0.0183,1.1797,0.2381,-0.0038,0.8036,Not significant
+BPNN vs ABC-FFNN,-0.0131,1.1641,0.2444,0,1,Not significant
+GRNN vs ABC-FFNN,0.0051,0.324,0.7459,0.0038,0.8145,Not significant
