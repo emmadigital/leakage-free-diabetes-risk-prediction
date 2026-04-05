@@ -1,4 +1,4 @@
-# Leakage-Free Machine Learning Framework for Diabetes Risk Prediction
+# A Leakage-Free and Statistically Validated Machine Learning Evaluation Framework for Diabetes Risk Prediction Across Multiple Datasets
 
 This repository provides the **MATLAB implementation, statistical evaluation scripts, and reproducible experiment pipeline** for the study:
 
@@ -311,7 +311,7 @@ Leakage-Free Machine Learning Framework for Diabetes Risk Prediction
 If you use this repository, please cite the associated study:
 
 ```
-Leakage-Free Machine Learning Framework for Diabetes Risk Prediction
+A Leakage-Free and Statistically Validated Machine Learning Evaluation Framework for Diabetes Risk Prediction Across Multiple Datasets
 ```
 
 ---
