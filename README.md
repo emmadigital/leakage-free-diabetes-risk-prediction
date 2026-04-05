@@ -202,17 +202,6 @@ Leakage-Free-Diabetes-Risk-Prediction
 ├── docs
 │   ├── Table4_Statistical_Comparison_Dataset1.csv
 │   ├── Table5_Statistical_Comparison_Dataset2.csv
-│   ├── Figure 2.png
-│   ├── Figure3.png
-│   ├── Figure 4.png
-│   ├── Figure 5.png
-│   ├── Figure 6.png
-│   ├── Figure 7.png
-│   ├── Figure 8.png
-│   ├── Figure 9.png
-│   ├── Figure 10.png
-│   ├── Figure 11.png
-│   ├── Figure 12.png
 │
 └── README.md
 ```
